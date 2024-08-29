@@ -1,0 +1,32 @@
+import csv
+import random
+
+# Define the file name
+filename = 'inventory.csv'
+
+# Define the field names
+fields = ['product_name', 'quantity', 'price', 'product_type', 'sales']
+
+# Define product types
+product_types = ['Electronics', 'Food', 'Clothes', 'Other']
+
+# Generate 500 sample rows
+rows = [
+    [
+        f'Product {chr(65 + i % 26)}{i}',                      # product_name
+        i * 10 % 300,                                          # quantity
+        round(5 + (i * 1.5) % 100, 2),                         # price
+        random.choice(product_types),                          # product_type
+        random.randint(0, 1000)                                # sales
+    ]
+    for i in range(500)
+]
+
+# Write to CSV file
+with open(filename, 'w', newline='') as csvfile:
+    csvwriter = csv.writer(csvfile)
+    csvwriter.writerow(fields)  # Write the header
+    csvwriter.writerows(rows)   # Write the data
+
+print(f'CSV file "{filename}" created successfully with 500 entries including product type and sales.')
+
