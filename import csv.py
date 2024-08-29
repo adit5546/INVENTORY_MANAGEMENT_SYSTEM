@@ -19,7 +19,7 @@ rows = [
         random.choice(product_types),                          # product_type
         random.randint(0, 1000)                                # sales
     ]
-    for i in range(500)
+    for i in range(1000000)
 ]
 
 # Write to CSV file
